@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block blog_posts %}
+<div class="postwrapper">
+		{% if user.is_superuser %}
+			<h2>{{ post.title }}</h2>
+			<p>{{ post.author }}</p>
+			<p>{{ post.draft|safe }}</p>
+			<p>{{ post.created_date }}</p>
+
+			<form method="POST" class="post-form">{% csrf_token %}
+			<button type="submit" href="/blog/post/{{ post.id }}/post_edit" name="prev_submit">Submit</button>
+			<button type="submit" href="/blog/post/{{ post.id }}/post_edit" name="prev_edit">Edit</button>
+			</form>
+		{% endif %}
+</div>
+{% endblock %}

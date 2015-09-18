@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block blog_posts %}
+<style>
+.a_button{
+	text-decoration:none;
+	color: black;
+}
+</style>
+<div class="postwrapper">
+		<h2>{{ post.title }}</h2>
+		<p>{{ post.author }}</p>
+		<p>{{ post.text|safe }}</p>
+		<p>{{ post.created_date }}</p>
+		
+		{% if user.is_superuser %}
+		<a class="btn a_button" href="/blog/post/{{ post.id }}/post_edit"><button>Edit</button></a>
+		{% endif %}
+</div>
+{% endblock %}
