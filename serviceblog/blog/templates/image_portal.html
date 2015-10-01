@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	{% if user.is_superuser %}
+		<form method="POST" enctype=multipart/form-data class="post-form">{% csrf_token %}
+			{{ ImageForm.as_p }}
+			<button type="submit" value="Upload">Upload</button> 
+		</form>
+
+		{% for path in paths %}
+			<img src="{{ path }}" />
+			{{ path }}
+		{% endfor %}
+
+		<div class="pagination">
+			<span class="step-links">
+				{% if paths.has_previous %}
+					<a href="?page={{ paths.previous_page_number}}">previous</a>
+				{% endif %}
+
+			<span class="current">
+				Page {{ paths.number }} of {{ paths.paginator.num_pages }}.
+			</span>
+
+			{% if paths.has_next %}
+				<a href="?page={{ paths.next_page_number }}"> next</a>
+			{% endif %}
+		</span>
+	</div>
+	{% endif %}
+{% endblock %}

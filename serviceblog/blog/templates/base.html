@@ -1,24 +1,64 @@
-<!DOCTYPE html>
-{% load static %}
+<!DOCTYPE html> {% load static %}
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<title>My Blog</title>
 	<link rel="stylesheet" href="/static/css/blog.css">
 	<link rel="stylesheet" type="../../main/static/css/style.css" href="">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
 </head>
-<body>
-	
-	<div class="banner">
-		<h1><a href="/blog" class="serviceBanner">Service Banner</a><h1>
-	</div>
-	{% if user.is_superuser %}
-		<a href="{% url "post_new" %}">New Blog Entry</a>
-	{% endif %}
-	
-		{% block content %} {% endblock %}
-		{% block blog_posts %}{% endblock %}
-		{% block single_post %}{% endblock %}
 
+<body>
+	<div class="toolbar" layout="row">
+		<div class="container">
+			<div class="servicelogo">
+				<a href="https://service.com/"><img class="serviceBanner" src="/static/img/serviceLogo.svg"></a>
+			</div>
+			<div toolbar-right>
+        <span class="login-container"> <a href="https://int.service.com/login" class="login">Login</a></span>
+			</div>
+		</div>
+	</div>
+	<div class="pagecontainer">
+
+		<div class="leftcontent">
+			{% if user.is_superuser %}
+			<a class="newblog" href="{% url "post_list" %}">Home</a>
+			<a class="newblog" href="{% url "post_new" %}">New Blog Entry</a>
+			<a class="newblog" href="{% url "upload_image" %}">Image Portal</a>
+			{% endif %}
+
+			{% block content %} {% endblock %}
+			{% block blog_posts %}{% endblock %}
+			{% block single_post %}{% endblock %}
+		</div>
+
+		<div class="rightcontent" >
+			<div class="navheader">
+				<a href="/blog"><h5>All Articles</h5></a>
+
+	<!-- Social Media Icons
+				<a href="http://twitter.com" class="icon-button twitter"><i class="icon-twitter"></i><span></span></a>
+	<a href="http://facebook.com/servicedot" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
+	<a href="http://plus.google.com" class="icon-button google-plus"><i class="icon-google-plus"></i><span></span></a>
+	-->
+			</div>
+			{% for posts in blogPosts %}
+				<a href= "/blog/post/{{ posts.id }}"> <h2>{{ posts.title }}</h2></a>
+				{% if user.is_superuser %}	
+					{% if posts.active %}
+						ACTIVE
+					{% else %}
+						INACTIVE
+					{% endif %}	
+				{% endif %}	
+				
+				<h3>{{ posts.created_date }}</h3>
+			{% endfor %}
+
+		</div>
+	</div>
 </body>
+
 </html>

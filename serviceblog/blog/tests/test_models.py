@@ -16,7 +16,6 @@ class BlogModelTest(TestCase):
 		sample.title = 'Test Yo'
 		sample.created_date = '2015-09-04'
 		sample.text = 'AND NEW'
-		sample.slug = '1'
 		sample.save()
 
 		sample2 = Post()
@@ -24,7 +23,6 @@ class BlogModelTest(TestCase):
 		sample2.title = 'UFC Champion'
 		sample2.created_date = '2015-09-04'
 		sample2.text = 'AND STILL'
-		sample2.slug = '2'
 		sample2.save()
 
 		saved_posts = Post.objects.all()

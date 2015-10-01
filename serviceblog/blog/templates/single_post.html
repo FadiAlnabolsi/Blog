@@ -8,13 +8,39 @@
 }
 </style>
 <div class="postwrapper">
-		<h2>{{ post.title }}</h2>
-		<p>{{ post.author }}</p>
-		<p>{{ post.text|safe }}</p>
-		<p>{{ post.created_date }}</p>
+
+	<h2>{{ post.title }}</h2>
+	<p>{{ post.author }}</p>
+	<p>{{ post.text|safe }}</p>
+	<p>{{ post.created_date }}</p>
 		
-		{% if user.is_superuser %}
+	{% if user.is_superuser %}
+
+		{% if posts.active %}
+			<p>ACTIVE</p>
+			{% else %}
+			<p>INACTIVE</p>
+			{% endif %}
+
 		<a class="btn a_button" href="/blog/post/{{ post.id }}/post_edit"><button>Edit</button></a>
-		{% endif %}
+
+	{% endif %}
+
+
+
+	<div class= "blogfooter"id="disqus_thread"></div>
+	<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+	    var disqus_shortname = 'service2231';
+
+	    /* * * DON'T EDIT BELOW THIS LINE * * */
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow"></a></noscript>
+	
 </div>
 {% endblock %}

@@ -1,23 +1,14 @@
 {% extends 'base.html' %}
 
 {% block blog_posts %}
-<div class="postwrapper"
->	{% if user.is_superuser %}
-		{% for posts in blogPosts %}
-			<h3><a href= "/blog/post/{{ posts.id }}" > {{ posts.title }}</a></h3>
-			<p>{{ posts.author }}</p>
-			<p>{{ posts.text|safe }}</p>
-			<p>{{ posts.created_date }}</p>
-		{% endfor %}
-	{% else %}
-		{% for posts in blogPosts %}
-			<h3><a href= "/blog/post/{{ posts.id }}" > {{ posts.title }}</a></h3>
-			<p>{{ posts.author }}</p>
-			<p>{{ posts.text|safe }}</p>
-			<p>{{ posts.created_date }}</p>
-		{% endfor %}
-	{% endif %}
+<div class="postwrapper">
 
+	{% for posts in blogPosts %}
+		<h3> {{ posts.title }}</h3>
+		<p>{{ posts.author }}</p>
+		<p>{{ posts.text|safe }}</p>
+		<p>{{ posts.created_date }}</p>
+	{% endfor %}
 
 	<div class="pagination">
 		<span class="step-links">

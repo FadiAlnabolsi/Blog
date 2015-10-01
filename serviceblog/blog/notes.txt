@@ -1,14 +1,3 @@
 important to-do: unit tests
 
-To-do: figure out design for service blog page
-
-To-Do: comments
-
-maybe: uploading images in form to local storage
-
-soft deletes (with datetimefield)
-	active date inactive date
-
-
-
-important! inactive posts shouldn't be accessible in blog_post
+to-do: extra design?
