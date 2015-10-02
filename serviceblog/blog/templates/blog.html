@@ -4,10 +4,9 @@
 <div class="postwrapper">
 
 	{% for posts in blogPosts %}
-		<h3> {{ posts.title }}</h3>
-		<p>{{ posts.author }}</p>
+		<h2> {{ posts.title }}</h2>
+		<h4>{{ posts.created_date }}</h4>
 		<p>{{ posts.text|safe }}</p>
-		<p>{{ posts.created_date }}</p>
 	{% endfor %}
 
 	<div class="pagination">
@@ -27,4 +26,3 @@
 	</div>
 </div>
 {% endblock %}
-

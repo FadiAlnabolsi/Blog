@@ -1,19 +1,14 @@
 {% extends 'base.html' %}
 
 {% block blog_posts %}
-<style>
-.a_button{
-	text-decoration:none;
-	color: black;
-}
-</style>
+
 <div class="postwrapper">
 
 	<h2>{{ post.title }}</h2>
-	<p>{{ post.author }}</p>
+	<h4>{{ post.author }}</h4>
 	<p>{{ post.text|safe }}</p>
-	<p>{{ post.created_date }}</p>
-		
+	<h4>{{ post.created_date }}</h4>
+
 	{% if user.is_superuser %}
 
 		{% if posts.active %}
@@ -41,6 +36,6 @@
 	    })();
 	</script>
 	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow"></a></noscript>
-	
+
 </div>
 {% endblock %}

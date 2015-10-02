@@ -3,31 +3,38 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>My Blog</title>
+	<title>Service.com Official Blog</title>
 	<link rel="stylesheet" href="/static/css/blog.css">
 	<link rel="stylesheet" type="../../main/static/css/style.css" href="">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-	<div class="toolbar" layout="row">
+	<div class="toolbar">
+		<div class="thisshouldwork">
 		<div class="container">
 			<div class="servicelogo">
-				<a href="https://service.com/"><img class="serviceBanner" src="/static/img/serviceLogo.svg"></a>
+				<a href="https://service.com/"><img class="serviceBanner" src="http://s2.postimg.org/6d1qyyjyx/service_Logo.jpg"></a>
 			</div>
-			<div toolbar-right>
-        <span class="login-container"> <a href="https://int.service.com/login" class="login">Login</a></span>
-			</div>
+        <div class= "logincontainer">	<a href="https://int.service.com/login" class="login">Login</a></div>
 		</div>
 	</div>
-	<div class="pagecontainer">
-
-		<div class="leftcontent">
+</div>
+	<div class="admin-control">
 			{% if user.is_superuser %}
 			<a class="newblog" href="{% url "post_list" %}">Home</a>
 			<a class="newblog" href="{% url "post_new" %}">New Blog Entry</a>
 			<a class="newblog" href="{% url "upload_image" %}">Image Portal</a>
 			{% endif %}
+
+	</div>
+	<div class="pagecontainer">
+<div class="blogtitle">
+					<h1>Service.com Official Blog</h1>
+</div>
+		<div class="leftcontent">
+
+
 
 			{% block content %} {% endblock %}
 			{% block blog_posts %}{% endblock %}
@@ -36,24 +43,18 @@
 
 		<div class="rightcontent" >
 			<div class="navheader">
-				<a href="/blog"><h5>All Articles</h5></a>
+				<a href="/blog">All Articles</a>
 
-	<!-- Social Media Icons
-				<a href="http://twitter.com" class="icon-button twitter"><i class="icon-twitter"></i><span></span></a>
-	<a href="http://facebook.com/servicedot" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
-	<a href="http://plus.google.com" class="icon-button google-plus"><i class="icon-google-plus"></i><span></span></a>
-	-->
 			</div>
 			{% for posts in blogPosts %}
 				<a href= "/blog/post/{{ posts.id }}"> <h2>{{ posts.title }}</h2></a>
-				{% if user.is_superuser %}	
+				{% if user.is_superuser %}
 					{% if posts.active %}
 						ACTIVE
 					{% else %}
-						INACTIVE
-					{% endif %}	
-				{% endif %}	
-				
+					{% endif %}
+				{% endif %}
+
 				<h3>{{ posts.created_date }}</h3>
 			{% endfor %}
 
