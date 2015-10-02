@@ -146,8 +146,7 @@ display:inline;
 }
 .admin-control {
   margin-top: 1em;
-  margin-bottom: 2em;
-  max-width: 1250px;
+    max-width: 1250px;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -260,6 +259,8 @@ padding: .5em;
 background-color: rgb(59, 169, 244);
 color: white !important;
 border-radius: 3px;
+margin-bottom: 2em;
+
 }
 
 .thisshouldwork {
