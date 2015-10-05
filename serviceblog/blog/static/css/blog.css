@@ -31,13 +31,14 @@ display:inline;
 }
 
 .blogtitle h1 {
-  padding-left: .8em;
+  padding-left: .5em;
   color: black;
   font-size: 40px;
   font-weight: 300;
   line-height: 42px;
   min-height: 2em;
   text-align: center;
+  text-overflow: ellipsis;
 }
 .blogtitle {
   padding-left: 20%;
@@ -85,9 +86,8 @@ display:inline;
 }
 
 .leftcontent {
-  padding: 1em;
+  padding-left: 2em;
   padding-right: 0;
-  padding-left: 5em;
   display: inline-block;
   width: 100%;
   padding-top: 1.4em;
@@ -138,7 +138,6 @@ display:inline;
 
   .leftcontent img {
     min-width: 65vw !important;
-    padding-left: 6px !important;
   }
   .leftcontent {
       padding-left: 0px;
@@ -183,11 +182,15 @@ padding-bottom: .8em;
 }
 .postwrapper {
   padding-left: 3em;
-  width: 80%;
+  width: 85%;
  word-wrap: break-word;
  padding-bottom: 20px;
 }
-
+@media (max-width: 959px) {
+ .postwrapper {
+   padding-left: 1.5em;
+ }
+}
 
 .postwrapper h1 {
   color: black;
